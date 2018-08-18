@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/manage-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-bean" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-common-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-manage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-manage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-manage-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-service-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yalong-web-util" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

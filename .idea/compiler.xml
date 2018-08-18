@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="yalong-bean" />
+        <module name="yalong-common-util" />
+        <module name="yalong-interface" />
+        <module name="yalong-manage-service" />
+        <module name="yalong-manage-web" />
+        <module name="yalong-service-util" />
+        <module name="yalong-web-util" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="manage-web" target="1.8" />
+      <module name="yalong-bean" target="1.8" />
+      <module name="yalong-common-util" target="1.8" />
+      <module name="yalong-interface" target="1.8" />
+      <module name="yalong-manage-service" target="1.8" />
+      <module name="yalong-manage-web" target="1.8" />
+      <module name="yalong-parent" target="1.8" />
+      <module name="yalong-service-util" target="1.8" />
+      <module name="yalong-web-util" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

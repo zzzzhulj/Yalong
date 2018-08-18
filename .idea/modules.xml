@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Yalong.iml" filepath="$PROJECT_DIR$/Yalong.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-bean/yalong-bean.iml" filepath="$PROJECT_DIR$/yalong-bean/yalong-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-common-util/yalong-common-util.iml" filepath="$PROJECT_DIR$/yalong-common-util/yalong-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-interface/yalong-interface.iml" filepath="$PROJECT_DIR$/yalong-interface/yalong-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-manage-service/yalong-manage-service.iml" filepath="$PROJECT_DIR$/yalong-manage-service/yalong-manage-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-manage-web/yalong-manage-web.iml" filepath="$PROJECT_DIR$/yalong-manage-web/yalong-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-parent/yalong-parent.iml" filepath="$PROJECT_DIR$/yalong-parent/yalong-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-service-util/yalong-service-util.iml" filepath="$PROJECT_DIR$/yalong-service-util/yalong-service-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-web-util/yalong-web-util.iml" filepath="$PROJECT_DIR$/yalong-web-util/yalong-web-util.iml" />
+    </modules>
+  </component>
+</project>

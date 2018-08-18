@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>新贷后smp</title>
+    <meta content="text/html; charset=utf-8" http-equiv=content-type>
+    <meta content=no-cache http-equiv=pragma>
+    <meta content=no-cache http-equiv=cache-control>
+    <meta content=0 http-equiv=expires>
+
+
+    <link rel=stylesheet type=text/css  href="smp_files/common.css">
+    <link rel=stylesheet type=text/css href="smp_files/ztreestyle.css">
+
+
+    <link rel="stylesheet"  href="icplatform/plugins/easyui/themes/default/easyui.css" type="text/css">
+    <link rel="stylesheet" href="icplatform/plugins/easyui/themes/icon.css" type="text/css">
+    <link rel="stylesheet" type="text/css"  href="icplatform/css/model.css"></link>
+
+
+    <script type=text/javascript src="smp_files/jquery-1.7.1.min.js"></script>
+    <script type=text/javascript src="smp_files/jquery.easyui.min.js"></script>
+    <script type=text/javascript src="smp_files/easyui-lang-zh_cn.js"></script>
+    <script type=text/javascript src="smp_files/formvalidatorregex.js"></script>
+    <script type=text/javascript src="smp_files/jquery.form.js"></script>
+    <script type=text/javascript src="smp_files/ajaxsetup.js"></script>
+    <script type=text/javascript src="smp_files/jquery.ztree.core-3.1.min.js"></script>
+    <script type=text/javascript src="smp_files/jquery.ztree.excheck-3.1.min.js"></script>
+    <script type=text/javascript src="smp_files/jquery.ztree.exedit-3.1.min.js"></script>
+    <link rel=stylesheet type=text/css href="smp_files/jquery.messager.js">
+    <!--<script type="text/javascript" src="/smp/resourse/js/common.js"></script>-->
+    <!--<script type="text/javascript" src="/smp/resourse/js/constants.js"></script>-->
+
+    <style type="text/css">
+        ul.ztree {
+            margin-top: 10px;
+            border: 1px solid #617775;
+            background: #f0f6e4;
+        }
+    </style>
+
+
+
+
+    <style type=text/css>ul.ztree {
+        border-bottom: #617775 1px solid; border-left: #617775 1px solid; margin-top: 10px; background: #f0f6e4; border-top: #617775 1px solid; border-right: #617775 1px solid
+    }
+    </style>
+
+    <script type=text/javascript src="smp_files/common.js"></script>
+
+    <script type=text/javascript src="smp_files/constants.js"></script>
+
+
+
+    <script>
+        function addtab(title, url){
+            if ($('#tabs').tabs('exists', title)){
+                $('#tabs').tabs('select', title);
+            } else {
+                //var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+
+                var content = '<iframe name="" border=0 marginwidth=13 marginheight=0 src="'+url+'" frameborder=no width=100% scrolling=yes height=100% allowtransparency></iframe>';
+                //alert(content);
+                $('#tabs').tabs('add',{
+                    title:title,
+                    content:content,
+                    closable:true
+                });
+            }
+        }
+    </script>
+    <meta name=generator content="mshtml 9.00.8112.16421">
+</head>
+<body class=easyui-layout>
+<div id=head region="north"><span id=logo>新贷后平台</span>
+    <ul id=contact>
+        <li class=dot1>点击切换组：<input style="width: 120px" id=group
+                                    onclick=changegroup() name=group readonly>
+        <li class=dot1>当前登录用户：<font color=dodgerblue size=3>新贷后平台</font>
+        <li class=dot1><a onclick=modifypassword()
+                          href="">修改密码</a>
+        <li class=dot1><a onclick=logout()
+                          href="">退出系统</a> </li></ul></div>
+<!-- 左侧系统导航列表 -->
+<div style="width: 200px; overflow: hidden; padding1: 1px" title=系统列表
+     region="west" split="true">
+
+    <div style="margin:20px 0;"></div>
+    <div class="easyui-panel" style="padding:5px">
+        <ul class="easyui-tree">
+
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('放款列表','./放款列表/放款列表.html')" target="_parent" style=""><span >放款列表</span></a>
+
+                </ul>
+            </li>
+
+
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('合同列表','./合同列表/合同列表.html')" target="_parent" style=""><span >合同列表</span></a>
+
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('前期费用查询','./前期费用查询/前期费用查询列表.html')" target="_parent" style=""><span >前期费用列表</span></a>
+                </ul>
+            </li>
+
+            <li>
+
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('变更服务费列表','./变更服务费/变更服务费.html')" target="_parent" style=""><span >变更费用列表</span></a>
+                </ul>
+            </li>
+
+
+            <li>
+                <ul>
+
+                    <a  class="" treenode_a="" href="#" onclick="addtab('正常待还款列表','./待还款列表/待还款列表.html')" target="_parent" style=""><span >正常待还款</span></a>
+
+                </ul>
+
+            </li>
+
+
+
+
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('逾期列表','./逾期列表/逾期列表.html')" target="_parent" style=""><span >逾期列表</span></a>
+                </ul>
+            </li>
+
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('已还款列表','./已还款列表/已还款列表.html')" target="_parent" style=""><span >已还款列表</span></a>
+                </ul>
+
+            </li>
+
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('扣款结果查询','./扣款结果查询/扣款结果查询列表.html')" target="_parent" style=""><span >扣款结果查询</span></a>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <a  class="" treenode_a="" href="#" onclick="addtab('信托扣款明细查询','./信托扣款明细查询/信托扣款明细查询.html')" target="_parent" style=""><span >信托扣款明细查询</span></a>
+                </ul>
+            </li>
+
+
+            <li state="closed">
+                <span>vl合同管理</span>
+
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('成长企业贷合同','./成长企业贷管理/成长企业贷合同管理.html')" target="_parent" style=""><span >vl合同列表</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('成长企业贷合同审核列表','./成长企业贷管理/成长企业贷合同审核列表.html')" target="_parent" style=""><span >vl合同审核</span></a>
+                    </li>
+
+
+
+                </ul>
+            </li>
+            <li state="closed">
+                <span>vl合同变更处理</span>
+
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('成长企业贷变更申请','./成长企业贷变更处理/成长企业贷合同变更申请列表.html')" target="_parent" style=""><span >vl变更申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('成长企业贷变更审核列表','./成长企业贷变更处理/成长企业贷合同变更审核列表.html')" target="_parent" style=""><span >vl变更审核</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('成长企业贷变更历史','./成长企业贷变更处理/成长企业贷合同变更历史列表.html')" target="_parent" style=""><span >vl变更历史</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+            <li state="closed">
+                <span>预约还款</span>
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('预约还款','./预约还款/预约还款申请列表.html')" target="_parent" style=""><span >预约还款</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('一次性提前还款申请','./预约还款/一次性提前还款申请列表.html')" target="_parent" style=""><span >提前还款预约</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('一次性提前还款初审','./预约还款/一次性提前还款初审列表.html')" target="_parent" style=""><span >提前还款初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('一次性提前还款终审','./预约还款/一次性提前还款终审列表.html')" target="_parent" style=""><span >提前还款终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('预约还款历史','./预约还款/预约还款大历史.html')" target="_parent" style=""><span >预约还款历史</span></a>
+                    </li>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('系统预约还款历史','./预约还款/系统预约还款大历史.html')" target="_parent" style=""><span >系统预约历史</span></a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <li state="closed">
+                <span>减免</span>
+
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免申请','./减免/减免合同列表.html')" target="_parent" style=""><span >减免申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免初审','./减免/减免初审列表.html')" target="_parent" style=""><span >减免初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免终审','./减免/减免终审列表.html')" target="_parent" style=""><span >减免终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免历史','./减免/减免大历史.html')" target="_parent" style=""><span >减免历史</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li state="closed">
+                <span>减免结清</span>
+
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免结清申请','./减免结清/减免结清申请列表.html')" target="_parent" style=""><span >减免结清申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免结清初审','./减免结清/减免结清初审列表.html')" target="_parent" style=""><span >减免结清初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免结清终审','./减免结清/减免结清终审列表.html')" target="_parent" style=""><span >减免结清终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('减免结清历史','./减免结清/减免结清历史.html')" target="_parent" style=""><span >减免结清历史</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+
+
+
+
+
+            <li state="closed">
+                <span>退款</span>
+
+
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('退款申请','./退款/退款申请列表.html')" target="_parent" style=""><span >退款申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('退款初审','./退款/退款初审列表.html')" target="_parent" style=""><span >退款初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('退款终审','./退款/退款终审列表.html')" target="_parent" style=""><span >退款终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('退款历史','./退款/退款大历史.html')" target="_parent" style=""><span >退款历史</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li state="closed">
+                <span>银行卡变更</span>
+
+
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('银行卡变更申请','./银行卡变更/银行卡变更申请列表.html')" target="_parent" style=""><span >银行卡变更申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('银行卡变更初审','./银行卡变更/银行卡变更初审列表.html')" target="_parent" style=""><span >银行卡变更初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('银行卡变更终审','./银行卡变更/银行卡变更终审列表.html')" target="_parent" style=""><span >银行卡变更终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('银行卡变更历史','./银行卡变更/银行卡变更历史.html')" target="_parent" style=""><span >银行卡变更历史</span></a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <!--li state="closed">
+                    <span>还款方案变更</span>
+
+
+                 <ul>
+                     <li>
+                       <a  class="" treenode_a="" href="#" onclick="addtab('还款方案变更申请','./还款方案变更/还款方案变更申请.htm')" target="_parent" style=""><span >还款方案变更申请</span></a>
+                     </li>
+
+                     <li>
+                     <a  class="" treenode_a="" href="#" onclick="addtab('还款方案变更初定','./还款方案变更/还款方案变更初定.htm')" target="_parent" style=""><span >还款方案变更初定</span></a>
+                     </li>
+
+                     <li>
+                     <a  class="" treenode_a="" href="#" onclick="addtab('还款方案变更终审','./还款方案变更/还款方案变更终审.htm')" target="_parent" style=""><span >还款方案变更终审</span></a>
+                     </li>
+
+                     <li>
+                     <a  class="" treenode_a="" href="#" onclick="addtab('还款方案变更历史','./还款方案变更/还款方案变更历史.htm')" target="_parent" style=""><span >还款方案变更历史</span></a>
+                     </li>
+
+                  </ul>
+            </li-->
+
+
+
+            <li state="closed">
+                <span>保证金处理</span>
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('保证金处理申请','./保证金处理/保证金处理申请列表.html')" target="_parent" style=""><span >保证金处理申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('保证金处理初审','./保证金处理/保证金处理初审列表.html')" target="_parent" style=""><span >保证金处理初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('保证金处理终审','./保证金处理/保证金处理终审列表.html')" target="_parent" style=""><span >保证金处理终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('保证金处理历史','./保证金处理/保证金处理历史.html')" target="_parent" style=""><span >保证金处理历史</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li state="closed">
+                <span>其他费用补录</span>
+                <ul>
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('其他费用补录申请','./其他费用补录/其他费用补录申请列表.html')" target="_parent" style=""><span >其他费用补录申请</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('其他费用补录初审','./其他费用补录/其他费用补录初审列表.html')" target="_parent" style=""><span >其他费用补录初审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('其他费用补录终审','./其他费用补录/其他费用补录终审列表.html')" target="_parent" style=""><span >其他费用补录终审</span></a>
+                    </li>
+
+                    <li>
+                        <a  class="" treenode_a="" href="#" onclick="addtab('其他费用补录历史','./其他费用补录/其他费用补录历史.html')" target="_parent" style=""><span >其他费用补录历史</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+            <!--li>
+
+                <ul>
+                       <a  class="" treenode_a="" href="#" onclick="addtab('融资租赁经销商保证金确认','./融资租赁经销商保证金确认/融资租赁经销商保证金确认.htm')" target="_parent" style=""><span >经销商保证金确认</span></a>
+                </ul>
+           </li-->
+
+            <!--li state="closed">
+                 <span>信托担保补偿金</span>
+
+                <ul>
+                   <li>
+                     <a  class="" treenode_a="" href="#" onclick="addtab('待补偿列表','./信托担保补偿金/待补偿列表.htm')" target="_parent" style=""><span >待补偿列表</span></a>
+                   </li>
+
+                   <li>
+                     <a  class="" treenode_a="" href="#" onclick="addtab('已补偿列表','./信托担保补偿金/已补偿列表.htm')" target="_parent" style=""><span >已补偿列表</span></a>
+                   </li>
+
+                  </ul>
+            </li-->
+
+
+            <!--li>
+
+                    <ul>
+
+                            <a  class="" treenode_a="" href="#" onclick="addtab('融资租赁其他费用补录','./其他费用补录/其他费用补录.htm')" target="_parent" style=""><span >融资租赁其他费用补录</span></a>
+
+                    </ul>
+                </li-->
+        </ul>
+    </div>
+
+    <div id=navlist class=easyui-accordion border="false" fit="true"></div>
+</div>
+
+<!-- 右侧tab选项卡 -->
+<div style="" title="主页" region="center">
+
+    <div id=tabs class=easyui-tabs border="false" fit="true" >
+
+        <!--div id="tab1"  name="1" class="easyui-tabs"   closable="true"  title="减免结清">
+
+                   <iframe name="sq" border=0 marginwidth=13 marginheight=0 src="减免结清.htm" frameborder=no width="1600" scrolling=yes height=600 allowtransparency>
+        </iframe>
+            </div>
+
+
+        <div id="tab2"  name="2 "  class="easyui-tabs"  closable="true"   title="减免结清初审">
+        <iframe name="chsh" border=0 marginwidth=13 marginheight=0 src="减免结清初审.htm" frameborder=no width=1600 scrolling=yes height=600 allowtransparency>
+        </iframe>
+        </div>
+
+        <div id="tab3"  name="3"  class="easyui-tabs"   closable="true"  title="减免结清终审">
+        <iframe name="zhsh" border=0 marginwidth=13 marginheight=0 src="减免结清终审.htm" frameborder=no width=1600 scrolling=yes height=600 allowtransparency>
+        </iframe>
+        </div>
+
+        <div id="tab4"  name="4"  class="easyui-tabs"   closable="true"  title="减免结清历史">
+
+        <iframe name="lish" border=0 marginwidth=13 marginheight=0 src="减免结清历史.htm" frameborder=no width=1600 scrolling=yes height=600 allowtransparency>
+        </iframe>
+        </div-->
+
+
+
+
+
+    </div></div><!-- 选项卡右键菜单 -->
+
+
+</body></html>
