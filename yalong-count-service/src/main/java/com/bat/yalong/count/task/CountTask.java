@@ -60,7 +60,7 @@ public class CountTask {
         }
 
         jedis.del(dayCountKsy);
-
+        jedis.close();
     }
 
     @Scheduled(cron = "0 0/2 * * * ?")
@@ -76,6 +76,7 @@ public class CountTask {
         Long aLong = jedis.dbSize();
         dayCountDetail.setCount(aLong);
         countService.insertDayCountDetail(dayCountDetail);
+        jedis.close();
     }
 
 }

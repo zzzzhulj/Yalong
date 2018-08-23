@@ -15,20 +15,22 @@ import java.util.*;
 @Controller
 public class CountController {
 
-    public static void main(String[] args) {
-        SimpleDateFormat formater = new SimpleDateFormat("yyyy/MM/dd");
-//        SimpleDateFormat formater2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
-        String start = formater.format(new Date())+ " 00:00:00";
-        String end = formater.format(new Date())+ " 23:59:59";
-
-        System.out.println(start);
-        System.out.println(end);
-    }
 
     @Autowired
     private CountService countService;
 
+
+    @RequestMapping("/getOnlineCount")
+    @ResponseBody
+    public Object getOnlineCount(){
+        Integer result = countService.getOnlineCount();
+        return result;
+    }
+
+    @RequestMapping("/onlineCount")
+    public String onlineCount(){
+        return "onlineCountListener";
+    }
 
 
     @RequestMapping("/base_count")
@@ -55,23 +57,30 @@ public class CountController {
 
             String format = simpleDateFormat.format(date);
             yalongBaseCount.setTime(format);
-            yalongBaseCounts = countService.getBaseCounts(yalongBaseCount);
+            yalongBaseCounts = countService.getBaseCountsBetweenTime(yalongBaseCount);
         }else{
             String dateStr = year+"-"+mouth+"-"+day;
             YalongBaseCount yalongBaseCount = new YalongBaseCount();
             yalongBaseCount.setTime(dateStr);
-            yalongBaseCounts = countService.getBaseCounts(yalongBaseCount);
+            yalongBaseCounts = countService.getBaseCountsBetweenTime(yalongBaseCount);
         }
 
         List<String> urlList = new ArrayList<>();
         List<Map> seriesData = new ArrayList<>();
         for (YalongBaseCount yalongBaseCount : yalongBaseCounts) {
             String requestUrl = yalongBaseCount.getRequestUrl();
+            int i = requestUrl.lastIndexOf("/");
+            String substring = requestUrl.substring(i);
+//            requestUrl.substring();
             Integer count = yalongBaseCount.getCount();
-            urlList.add(requestUrl);
-
+            urlList.add(substring);
+            Map map1 = new HashMap();
+            map1.put("value", count);
+            map1.put("name", substring);
+            seriesData.add(map1);
         }
-
+        map.put("urlList", urlList);
+        map.put("seriesData", seriesData);
         return map;
     }
 

@@ -62,6 +62,8 @@ public class CountConsumer {
             String onLineKey = "yalong:"+ remoteAddr+":online";
             jedis.setex(onLineKey, 60*10,"如果登陆了就用用户id,没有登陆就存个0");
 
+            jedis.close();
+
         } catch (JMSException e) {
             e.printStackTrace();
         }

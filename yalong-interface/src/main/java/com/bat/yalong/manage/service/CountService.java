@@ -15,4 +15,8 @@ public interface CountService {
     void insertDayCountDetail(DayCountDetail dayCountDetail);
 
     List<DayCountDetail> getDayCountDetails(DayCountDetail dayCountDetail);
+
+    List<YalongBaseCount> getBaseCountsBetweenTime(YalongBaseCount yalongBaseCount);
+
+    Integer getOnlineCount();
 }
