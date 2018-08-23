@@ -81,7 +81,7 @@ public class NplmBorrowerInfo implements Serializable {
     private String updater;
     private String updateType;
     private Date createTime;
-    private Date updateTIme;
+    private Date updateTime;
 
 
     public Date getCreateTime() {
@@ -93,11 +93,11 @@ public class NplmBorrowerInfo implements Serializable {
     }
 
     public Date getUpdateTIme() {
-        return updateTIme;
+        return updateTime;
     }
 
     public void setUpdateTIme(Date updateTIme) {
-        this.updateTIme = updateTIme;
+        this.updateTime = updateTIme;
     }
 
     public Integer getId() {

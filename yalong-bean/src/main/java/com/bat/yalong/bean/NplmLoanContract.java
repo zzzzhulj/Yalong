@@ -1,5 +1,6 @@
 package com.bat.yalong.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -183,6 +184,179 @@ public class NplmLoanContract implements Serializable {
     private String updateType;//'修改类型',
     private Date createTime;
     private Date updateTime;
+
+    //借款人(客户信息)
+    @TableField(exist = false)
+    private NplmBorrowerInfo nplmBorrowerInfo;
+    //合同属性信息
+    @TableField(exist = false)
+    private NplmContractAttribute nplmContractAttribute;
+    // 营业部门信息
+    @TableField(exist = false)
+    private NplmDept nplmDept;
+    //贷款品种
+    @TableField(exist = false)
+    private NplmLoanVariety nplmLoanVariety;
+    //信托机构
+    @TableField(exist = false)
+    private NplmTrustAgency nplmTrustAgency;
+    //信托计划
+    @TableField(exist = false)
+    private NplmTrustPlan nplmTrustPlan;
+    //信托产品系列
+    @TableField(exist = false)
+    private NplmTrustSeries nplmTrustSeries;
+    @TableField(exist = false)
+    private String createTimeStart;
+    @TableField(exist = false)
+    private String createTimeEnd;
+    @TableField(exist = false)
+    private String putTimeStart;
+    @TableField(exist = false)
+    private String putTimeEnd;
+
+    private String clientName;
+    private String identityNum;
+    private String deptAddress;
+    private String deptName;
+    private String businessType;
+    private String changeType;
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getIdentityNum() {
+        return identityNum;
+    }
+
+    public void setIdentityNum(String identityNum) {
+        this.identityNum = identityNum;
+    }
+
+    public String getDeptAddress() {
+        return deptAddress;
+    }
+
+    public void setDeptAddress(String deptAddress) {
+        this.deptAddress = deptAddress;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public String getBusinessType() {
+        return businessType;
+    }
+
+    public void setBusinessType(String businessType) {
+        this.businessType = businessType;
+    }
+
+    public String getChangeType() {
+        return changeType;
+    }
+
+    public void setChangeType(String changeType) {
+        this.changeType = changeType;
+    }
+
+    public String getCreateTimeStart() {
+        return createTimeStart;
+    }
+
+    public void setCreateTimeStart(String createTimeStart) {
+        this.createTimeStart = createTimeStart;
+    }
+
+    public String getCreateTimeEnd() {
+        return createTimeEnd;
+    }
+
+    public void setCreateTimeEnd(String createTimeEnd) {
+        this.createTimeEnd = createTimeEnd;
+    }
+
+    public String getPutTimeStart() {
+        return putTimeStart;
+    }
+
+    public void setPutTimeStart(String putTimeStart) {
+        this.putTimeStart = putTimeStart;
+    }
+
+    public String getPutTimeEnd() {
+        return putTimeEnd;
+    }
+
+    public void setPutTimeEnd(String putTimeEnd) {
+        this.putTimeEnd = putTimeEnd;
+    }
+
+    public NplmBorrowerInfo getNplmBorrowerInfo() {
+        return nplmBorrowerInfo;
+    }
+
+    public void setNplmBorrowerInfo(NplmBorrowerInfo nplmBorrowerInfo) {
+        this.nplmBorrowerInfo = nplmBorrowerInfo;
+    }
+
+    public NplmContractAttribute getNplmContractAttribute() {
+        return nplmContractAttribute;
+    }
+
+    public void setNplmContractAttribute(NplmContractAttribute nplmContractAttribute) {
+        this.nplmContractAttribute = nplmContractAttribute;
+    }
+
+    public NplmDept getNplmDept() {
+        return nplmDept;
+    }
+
+    public void setNplmDept(NplmDept nplmDept) {
+        this.nplmDept = nplmDept;
+    }
+
+    public NplmLoanVariety getNplmLoanVariety() {
+        return nplmLoanVariety;
+    }
+
+    public void setNplmLoanVariety(NplmLoanVariety nplmLoanVariety) {
+        this.nplmLoanVariety = nplmLoanVariety;
+    }
+
+    public NplmTrustAgency getNplmTrustAgency() {
+        return nplmTrustAgency;
+    }
+
+    public void setNplmTrustAgency(NplmTrustAgency nplmTrustAgency) {
+        this.nplmTrustAgency = nplmTrustAgency;
+    }
+
+    public NplmTrustPlan getNplmTrustPlan() {
+        return nplmTrustPlan;
+    }
+
+    public void setNplmTrustPlan(NplmTrustPlan nplmTrustPlan) {
+        this.nplmTrustPlan = nplmTrustPlan;
+    }
+
+    public NplmTrustSeries getNplmTrustSeries() {
+        return nplmTrustSeries;
+    }
+
+    public void setNplmTrustSeries(NplmTrustSeries nplmTrustSeries) {
+        this.nplmTrustSeries = nplmTrustSeries;
+    }
 
     public Date getCreateTime() {
         return createTime;

@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/manage-web/pom.xml" />
         <option value="$PROJECT_DIR$/yalong-manage-web/pom.xml" />
         <option value="$PROJECT_DIR$/yalong-manage-service/pom.xml" />
+        <option value="$PROJECT_DIR$/yalong-count-service/pom.xml" />
       </list>
     </option>
   </component>

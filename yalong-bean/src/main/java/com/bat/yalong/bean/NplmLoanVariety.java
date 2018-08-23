@@ -4,11 +4,13 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import java.io.Serializable;
+
 /**
  *贷款品种
  */
 @TableName("nplm_loan_variety")
-public class NplmLoanVariety {
+public class NplmLoanVariety implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;

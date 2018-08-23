@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="yalong-bean" />
         <module name="yalong-common-util" />
+        <module name="yalong-count-service" />
         <module name="yalong-interface" />
         <module name="yalong-manage-service" />
         <module name="yalong-manage-web" />
@@ -19,6 +20,7 @@
       <module name="manage-web" target="1.8" />
       <module name="yalong-bean" target="1.8" />
       <module name="yalong-common-util" target="1.8" />
+      <module name="yalong-count-service" target="1.8" />
       <module name="yalong-interface" target="1.8" />
       <module name="yalong-manage-service" target="1.8" />
       <module name="yalong-manage-web" target="1.8" />

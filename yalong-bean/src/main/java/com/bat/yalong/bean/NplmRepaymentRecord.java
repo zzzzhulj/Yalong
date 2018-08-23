@@ -1,10 +1,12 @@
 package com.bat.yalong.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -15,33 +17,88 @@ import java.util.Date;
 public class NplmRepaymentRecord implements Serializable {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Integer businessRequestId;
-    private Integer loanContractNum;
-    private Date repaymentDate;
-    private Integer overdueDays;
-    private Integer overdueAmount;
-    private Integer repaymentAmount;
-    private Integer successAmount;
-    private String status;
+    private Integer businessRequestId;//业务请求id
+    private Integer loanContractNum;//合同编号
+    private Date repaymentDate;//还款请求日期
+    private Integer overdueDays;//逾期天数
+    private Integer overdueAmount;//逾期总金额
+    private Integer repaymentAmount;//扣款金额
+    private Integer successAmount;//成功金额
+    /**
+     *   0	处理中
+     *             1	成功
+     *             2	失败
+     *             3	部分成功
+     *             4	已撤销
+     *             5              不执行
+     */
+    private String status;//还款状态
     private String remark;
     private String specialCode;
     private Integer sort;
-    private String dataCreateType;
+    @TableField(exist = false)
+    private DataCreateType dataCreateType;
+    private Integer dataCreateTypeId;
+
+
     private String creator;
     private String updater;
-    private String accountName;
-    private String acctIdenType;
-    private String acctIdenNum;
-    private String accountNo;
-    private String accountType;
-    private String accountBankid;
-    private String accountBranchNo;
-    private String accountBankName;
-    private String publicPrivate;
-    private String actProvince;
-    private String accountCity;
+    private String accountName;//账户姓名
+    private String acctIdenType;//账户证件类型
+    private String acctIdenNum;//账户证件号
+    private String accountNo;//账户
+    private String accountType;//账户卡折标识
+    private String accountBankid;//账户银行
+    private String accountBranchNo;//开户行行号
+    private String accountBankName;//开户行名称
+    private String publicPrivate;//对公对私标识
+    private String actProvince;//开户省
+    private String accountCity;//开户市
     private String updateType;
+    private Timestamp reserveTime;
 
+    public Timestamp getReserveTime() {
+        return reserveTime;
+    }
+
+    public void setReserveTime(Timestamp reserveTime) {
+        this.reserveTime = reserveTime;
+    }
+
+    private Timestamp createTime;
+    private Timestamp updateTime;
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public DataCreateType getDataCreateType() {
+        return dataCreateType;
+    }
+
+    public void setDataCreateType(DataCreateType dataCreateType) {
+        this.dataCreateType = dataCreateType;
+    }
+
+    public Integer getDataCreateTypeId() {
+        return dataCreateTypeId;
+    }
+
+    public void setDataCreateTypeId(Integer dataCreateTypeId) {
+        this.dataCreateTypeId = dataCreateTypeId;
+    }
 
     public Integer getId() {
         return id;
@@ -139,13 +196,6 @@ public class NplmRepaymentRecord implements Serializable {
         this.sort = sort;
     }
 
-    public String getDataCreateType() {
-        return dataCreateType;
-    }
-
-    public void setDataCreateType(String dataCreateType) {
-        this.dataCreateType = dataCreateType;
-    }
 
     public String getCreator() {
         return creator;

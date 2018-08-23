@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 //NPLM_OVERDUE_CONTRACT
@@ -15,30 +16,56 @@ import java.util.Date;
 @TableName("NPLM_OVERDUE_CONTRACT")
 public class NplmOverdueContract implements Serializable {
 
-    @TableId(type = IdType.ID_WORKER_STR)
+    @TableId(type = IdType.AUTO)
     private String id;
-    private String loanContractNum;
-    private String overdueStatus;
-    private Date overdueDays;
-    private Integer instalmentCnt;
-    private Integer allDays;
-    private Integer allInstalmentCnt;
-    private Integer allNumber;
-    private Integer principalInterest;
-    private Integer allForfeit;
-    private Integer allAmerce;
-    private Integer allShould;
-    private Integer allIndeed;
-    private Integer currentRepay;
-    private Integer allRepaymentAmount;
-    private String firstDate;
-    private String startDate;
-    private String serialStartDate;
-    private String overdueHistory;
-    private String computeDate;
+    private String loanContractNum;//合同编号
+    private String overdueStatus;//逾期状态 2 逾期 9正常还清
+    private Integer overdueDays;//现存逾期天数
+    private Integer instalmentCnt;//现存逾期期数
+    private Integer allDays;//总逾期天数
+    private Integer allInstalmentCnt;//总逾期期数
+    private Integer allNumber;//累计逾期天数
+    private Integer principalInterest;//尚欠本息
+    private Integer allForfeit;//滞纳总金额
+    private Integer allAmerce;//罚息总额
+    private Integer allShould;//累计应收款
+    private Integer allIndeed;//累计实收款
+    private Integer currentRepay;//当期应还总金额
+    private Integer allRepaymentAmount;//一次性结清金额
+    private Date firstDate;//首次逾期日期
+    private Date startDate;//现存逾期开始日期
+    private Date serialStartDate;//首次出现连续逾期的开始日期
+    private String overdueHistory;//过去18个月逾期历史
+    private Date computeDate;//计算违约日期
     private String creator;
     private String updater;
     private String updateType;
+    private Timestamp createTime;
+    private Timestamp updateTime;
+
+    public Date getFirstDate() {
+        return firstDate;
+    }
+
+    public void setFirstDate(Date firstDate) {
+        this.firstDate = firstDate;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public String getId() {
         return id;
@@ -64,11 +91,11 @@ public class NplmOverdueContract implements Serializable {
         this.overdueStatus = overdueStatus;
     }
 
-    public Date getOverdueDays() {
+    public Integer getOverdueDays() {
         return overdueDays;
     }
 
-    public void setOverdueDays(Date overdueDays) {
+    public void setOverdueDays(Integer overdueDays) {
         this.overdueDays = overdueDays;
     }
 
@@ -160,27 +187,19 @@ public class NplmOverdueContract implements Serializable {
         this.allRepaymentAmount = allRepaymentAmount;
     }
 
-    public String getFirstDate() {
-        return firstDate;
-    }
-
-    public void setFirstDate(String firstDate) {
-        this.firstDate = firstDate;
-    }
-
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getSerialStartDate() {
+    public Date getSerialStartDate() {
         return serialStartDate;
     }
 
-    public void setSerialStartDate(String serialStartDate) {
+    public void setSerialStartDate(Date serialStartDate) {
         this.serialStartDate = serialStartDate;
     }
 
@@ -192,11 +211,11 @@ public class NplmOverdueContract implements Serializable {
         this.overdueHistory = overdueHistory;
     }
 
-    public String getComputeDate() {
+    public Date getComputeDate() {
         return computeDate;
     }
 
-    public void setComputeDate(String computeDate) {
+    public void setComputeDate(Date computeDate) {
         this.computeDate = computeDate;
     }
 

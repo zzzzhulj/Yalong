@@ -14,6 +14,16 @@ public class NplmTrustPlan implements Serializable {
 
     private String trustPlanName;
 
+    private String trustPlanDesc;
+
+    public String getTrustPlanDesc() {
+        return trustPlanDesc;
+    }
+
+    public void setTrustPlanDesc(String trustPlanDesc) {
+        this.trustPlanDesc = trustPlanDesc;
+    }
+
     public Integer getId() {
         return id;
     }

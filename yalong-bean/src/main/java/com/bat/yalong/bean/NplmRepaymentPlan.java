@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -15,45 +16,72 @@ public class NplmRepaymentPlan implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Integer loanContractNum;
-    private Integer instalment;
-    private Date preRepaymentDate;
-    private Date repaymentDate;
-    private Integer capital;
-    private Integer Integererest;
-    private Integer installmentFee;
-    private Integer amerce;
-    private Integer forfeit;
-    private Integer penalty;
-    private Integer changeFee;
-    private Integer otherFee;
-    private Integer repaymentAmount;
-    private Integer indeedCapital;
-    private Integer indeedInterest;
-    private Integer indeedInstFee;
-    private Integer indeedAmerce;
-    private Integer indeedForfeit;
-    private Integer indeedPenalty;
-    private Integer indeedChangeFee;
-    private Integer indeedOtherFee;
-    private Integer indeedAmount;
-    private Integer reduceCapital;
-    private Integer reduceInterest;
-    private Integer reduceAmerce;
-    private Integer reduceForfeit;
-    private Integer reduceInstFee;
-    private Integer reducePenalty;
-    private Integer reducePreFee;
-    private Integer reduceOther_fee;
-    private Integer remainCapital;
-    private Integer npvRemainCapital;
-    private Integer allRepaymentAmount;
+    private Integer loanContractNum;//合同编号
+    private Integer instalment;//所属分期
+    private Date preRepaymentDate;//上一还款日期
+    private Date repaymentDate;//还款日期
+    private Integer capital;//应收本金
+    private Integer Interest;//应收利息
+    private Integer installmentFee;//应收分期费用
+    private Integer amerce;////应收罚金
+    private Integer forfeit;//应收滞纳金
+    private Integer penalty;//应收违约金
+    private Integer changeFee;//应收变更手续费
+    private Integer otherFee;//应收其它费用
+    private Integer repaymentAmount;//应收还款总额
+    private Integer indeedCapital;//应收本金
+    private Integer indeedInterest;//应收利息
+    private Integer indeedInstFee;//实收分期费用
+    private Integer indeedAmerce;//实收罚金
+    private Integer indeedForfeit;//实收滞纳金
+    private Integer indeedPenalty;//实收违约金
+    private Integer indeedChangeFee;//搜搜变更手续费
+    private Integer indeedOtherFee;//实收其他费用
+    private Integer indeedAmount;//实收总额
+    private Integer reduceCapital;//减免本金
+    private Integer reduceInterest;//减免利息
+    private Integer reduceAmerce;//减免罚金
+    private Integer reduceForfeit;//减免滞纳金
+    private Integer reduceInstFee;//减免分期费用
+    private Integer reducePenalty;//减免违约金
+    private Integer reducePreFee;//减免前期费用
+    private Integer reduceOther_fee;//减免其他费用
+    private Integer remainCapital;//剩余本金
+    private Integer npvRemainCapital;//NPV剩余本金
+    private Integer allRepaymentAmount;//一次性全部提前还款金额
+    /**
+     * '还款状态：
+     *             0	未还款
+     *             1	已还款
+     *             2	部分还款
+     *             3	逾期
+     *             4	未满足收款条件（前期费用收取用）
+     */
     private String repaymentState;
-    private String remark;
+
+    private String remark;//备注
     private String creator;
     private String updater;
-    private String isOperating;
+    private String isOperating;//Y:是  N：否
     private String updateType;
+    private Timestamp createTime;
+    private Timestamp updateTime;
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Integer getId() {
         return id;
@@ -103,12 +131,12 @@ public class NplmRepaymentPlan implements Serializable {
         this.capital = capital;
     }
 
-    public Integer getIntegererest() {
-        return Integererest;
+    public Integer getInterest() {
+        return Interest;
     }
 
-    public void setIntegererest(Integer integererest) {
-        Integererest = integererest;
+    public void setInterest(Integer interest) {
+        Interest = interest;
     }
 
     public Integer getInstallmentFee() {

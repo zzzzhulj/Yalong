@@ -26,6 +26,13 @@ public class Page<T> extends Pagination implements Serializable {
      */
     private List<T> records = Collections.emptyList();
 
+    private int start;
+
+    public int getStart() {
+
+        return start;
+    }
+
     /**
      * 查询参数（ 不会传入到 xml 层，这里是 Controller 层与 service 层传递参数预留 ）
      */

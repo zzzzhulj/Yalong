@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Yalong.iml" filepath="$PROJECT_DIR$/Yalong.iml" />
       <module fileurl="file://$PROJECT_DIR$/yalong-bean/yalong-bean.iml" filepath="$PROJECT_DIR$/yalong-bean/yalong-bean.iml" />
       <module fileurl="file://$PROJECT_DIR$/yalong-common-util/yalong-common-util.iml" filepath="$PROJECT_DIR$/yalong-common-util/yalong-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yalong-count-service/yalong-count-service.iml" filepath="$PROJECT_DIR$/yalong-count-service/yalong-count-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/yalong-interface/yalong-interface.iml" filepath="$PROJECT_DIR$/yalong-interface/yalong-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/yalong-manage-service/yalong-manage-service.iml" filepath="$PROJECT_DIR$/yalong-manage-service/yalong-manage-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/yalong-manage-web/yalong-manage-web.iml" filepath="$PROJECT_DIR$/yalong-manage-web/yalong-manage-web.iml" />

@@ -4,17 +4,18 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 合同_合同属性表
  */
 @TableName("nplm_contract_attribute")
-public class NplmContractAttribute {
+public class NplmContractAttribute implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Integer loanContractId;//'合同id',
+    private String loanContractId;//'合同id',
     private Integer loanContractNum;//'合同编号',
     /**
      * '业务模式 1:转债权 2:火凤凰 3:信托 4:互联网 5:融资租赁 6:房贷一对一',
@@ -56,12 +57,22 @@ public class NplmContractAttribute {
      */
     private String channelName;
     private String loanOfficerId;//'所属信贷员ID',
-    private String cityID;
+    private String cityId;
     private String city;
     /**
      * '是否合同变更 Y:是  N:否',
      */
     private String isModify;
+    private String changeMoney;
+
+    public String getChangeMoney() {
+        return changeMoney;
+    }
+
+    public void setChangeMoney(String chanegMoney) {
+        this.changeMoney = chanegMoney;
+    }
+
     /**
      * '是否还款方案变更 Y:是  N:否',
      */
@@ -90,6 +101,18 @@ public class NplmContractAttribute {
      *  '是否转产品',
      */
     private String isChangeProduce;
+
+    //变更类型
+    private String changeType;
+
+    public String getChangeType() {
+        return changeType;
+    }
+
+    public void setChangeType(String changeType) {
+        this.changeType = changeType;
+    }
+
     /**
      * '是否违约 Y:是  N:否',
      */
@@ -177,11 +200,11 @@ public class NplmContractAttribute {
         this.id = id;
     }
 
-    public Integer getLoanContractId() {
+    public String getLoanContractId() {
         return loanContractId;
     }
 
-    public void setLoanContractId(Integer loanContractId) {
+    public void setLoanContractId(String loanContractId) {
         this.loanContractId = loanContractId;
     }
 
@@ -314,11 +337,11 @@ public class NplmContractAttribute {
     }
 
     public String getCityID() {
-        return cityID;
+        return cityId;
     }
 
     public void setCityID(String cityID) {
-        this.cityID = cityID;
+        this.cityId = cityID;
     }
 
     public String getCity() {

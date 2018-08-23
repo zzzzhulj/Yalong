@@ -1,10 +1,12 @@
 package com.bat.yalong.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -16,31 +18,41 @@ public class NplmRepaymentDetail implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private Integer repaymentPlanId;
-    private Integer repaymentRecordId;
-    private Integer businessRequestId;
-    private Integer loanContractNum;
-    private Date repaymentDate;
-    private Integer instalment;
-    private Integer shouldCapital;
-    private Integer shouldInterest;
-    private Integer shouldInstFee;
-    private Integer shouldAmerce;
-    private Integer shouldForfeit;
-    private Integer shouldPenalty;
-    private Integer shouldChangeFee;
-    private Integer shouldOtherFee;
-    private Integer shouldAmount;
-    private Integer indeedCapital;
-    private Integer indeedInterest;
-    private Integer indeedInstFee;
-    private Integer indeedAmerce;
-    private Integer indeedForfeit;
-    private Integer indeedPenalty;
-    private Integer indeedChangeFee;
-    private Integer indeedOtherFee;
-    private Integer indeedAmount;
-    private String status;
+    private Integer repaymentPlanId;//还款计划id
+    private Integer repaymentRecordId;//还借记录id
+    private Integer businessRequestId;//业务请求id
+    private Integer loanContractNum;//合同编号
+    private Date repaymentDate;//还款请求日期
+    private Integer instalment;//所属分期
+    private Integer shouldCapital;//应收本金
+    private Integer shouldInterest;//应收利息
+    private Integer shouldInstFee;//应收分期费用
+    private Integer shouldAmerce;//应收罚金
+    private Integer shouldForfeit;//应收滞纳金
+    private Integer shouldPenalty;//应收违约金
+    private Integer shouldChangeFee;//应收变更手续费
+    private Integer shouldOtherFee;//应收其他费用
+    private Integer shouldAmount;//应收总额
+    private Integer indeedCapital;//实收本金
+    private Integer indeedInterest;//实收利息
+    private Integer indeedInstFee;//实收分期费用
+    private Integer indeedAmerce;//实收罚金
+    private Integer indeedForfeit;//实收滞纳金
+    private Integer indeedPenalty;//实收违约金
+    private Integer indeedChangeFee;//实收变更手续费
+    private Integer indeedOtherFee;//实收其它费用
+    private Integer indeedAmount;//实收总额
+    /**
+     *  '还款状态
+     *             0	处理中
+     *             1	成功
+     *             2	失败
+     *             3	部分成功
+     *             4	已撤销
+     *             5              不执行',
+     */
+    private String status;//
+
     private Integer reduceCapital;
     private Integer reduceInterest;
     private Integer reduceAmerce;
@@ -49,13 +61,81 @@ public class NplmRepaymentDetail implements Serializable {
     private Integer reduceInstFee;
     private Integer reducePreFee;
     private Integer reduceOtherFee;
-    private String dataCreateType;
+    /**
+     * '数据创建类型：
+     *             0	前期费用(先放后收模式)
+     *             1	正常
+     *             2	逾期
+     *             3	预约-逾期
+     *             4	预约-正常
+     *             5	预约-一次性提前还款
+     *             6	预约-部分提前还款
+     *             7	预约-前期费用
+     *             8	展期
+     *             9	转产品
+     *             10	部分提前还款
+     *             11	循环贷结清
+     *             12	退款-保证金
+     *             13	退款-还款
+     *             14	退款-前期费用
+     *             15	减免
+     *             16	减免结清
+     *             17	线下-正常
+     *             18	保证金抵偿
+     *             19	前期费用(先收后放模式)
+     *             20	线下-提前还款
+     *             21	晚确认提前还款结清
+     *             22	前期费用（差额放款模式）
+     *             23	线下-前期费用
+     *             24	线下-展期费用
+     *             25	逾期-晚回盘补算逾期
+     *             26	逾期-前期费用
+     */
+    @TableField(exist = false)
+    private DataCreateType dataCreateType;
+
+    private Integer dataCreateTypeId;
+
     private String remark;
-    private String specialCode;
-    private Integer sort;
+
+    private String specialCode;//划扣特殊标识'
+    private Integer sort;//'扣款顺序'
     private String creator;
     private String updater;
     private String updateType;
+
+
+    private Timestamp createTime;
+
+    private Timestamp updateTime;
+
+    public void setDataCreateType(DataCreateType dataCreateType) {
+        this.dataCreateType = dataCreateType;
+    }
+
+    public Integer getDataCreateTypeId() {
+        return dataCreateTypeId;
+    }
+
+    public void setDataCreateTypeId(Integer dataCreateTypeId) {
+        this.dataCreateTypeId = dataCreateTypeId;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public Integer getId() {
         return id;
@@ -329,12 +409,8 @@ public class NplmRepaymentDetail implements Serializable {
         this.reduceOtherFee = reduceOtherFee;
     }
 
-    public String getDataCreateType() {
+    public DataCreateType getDataCreateType() {
         return dataCreateType;
-    }
-
-    public void setDataCreateType(String dataCreateType) {
-        this.dataCreateType = dataCreateType;
     }
 
     public String getRemark() {

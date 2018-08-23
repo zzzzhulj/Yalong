@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YalongCount</title>
+    <script type="text/javascript" src='echarts.js'></script>
+    <script type="text/javascript" src='jquery.min.js'></script>
+</head>
+<body>
+
+    <div id="chart" style="width:400px;height:400px;"></div>
+
+    <form id="form" method="post">
+        年:<input type="text" name="year" value=""/><br/>
+        月:<input type="text" name="mouth" /><br/>
+        日:<input type="text" name="day"/><br/>
+    </form>
+    <a href="#" onclick="submit()">提交</a><br/>
+
+</body>
+
+<script type="text/javascript">
+
+
+   $(function () {
+      randomData();
+   });
+
+    function submit() {
+        var param =$("#form").serialize();
+        randomData(param);
+        return;
+    }
+    function randomData(param) {
+        $.ajax({
+            url:"getDayCount",
+            type:"POST",
+            data:param,
+            success:function (result) {
+                console.log(result);
+                // var data = result.getData();
+                ydata = result;
+                var dom = document.getElementById("chart");
+                var myChart = echarts.init(dom);
+                var app = {};
+                option = null;
+                option = {
+                    title: {
+                        text: '每日不同时间段在线人数折线图',
+                        textStyle: {
+                            //设置主标题颜色
+                            color: '#c00a37'
+                        }
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        formatter: function (params) {
+                            params = params[0];
+                            return params.axisValue+"/"+params.value;
+                        },
+                        axisPointer: {
+                            animation: false
+                        }
+                    },
+                    xAxis: {
+                        name: "时间段",
+                        type: 'category',
+                        data: ['04:00', '08:00', '012:00', '016:00', '20:00', '24:00']
+                    },
+                    yAxis: {
+                        name: "在线人数",
+                        type: 'value'
+                    },
+                    series: [{
+                        data: ydata,
+                        type: 'line',
+                        smooth: false
+                    }]
+                };
+
+
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            }
+        });
+    }
+
+</script>
+
+</html>
