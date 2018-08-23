@@ -26,6 +26,9 @@ public class CountConsumer {
     @JmsListener(destination = "YALONG_COUNT_QUEUE",containerFactory = "jmsQueueListener")
     public void consumerPaymentResultCheck(MapMessage mapMessage){
         try {
+            Date date = new Date();
+            SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat fm2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String agent = mapMessage.getString("agent");
             String requestURL = mapMessage.getString("requestURL");
             String remoteAddr = mapMessage.getString("remoteAddr");
@@ -34,10 +37,8 @@ public class CountConsumer {
             yalongBaseCount.setBrowser(agent);
             yalongBaseCount.setRequestUrl(requestURL);
             yalongBaseCount.setIp(remoteAddr);
-            yalongBaseCount.setTime(new Timestamp(new Date().getTime()));
+            yalongBaseCount.setTime(fm2.format(date));
 //            使用list的存储结构 key为当前日期
-            Date date = new Date();
-            SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
             String format = fm.format(date);
             Jedis jedis =
                     redisUtil.getJedis();

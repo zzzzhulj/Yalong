@@ -1,5 +1,6 @@
 package com.bat.yalong.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -14,7 +15,7 @@ public class YalongBaseCount implements Serializable {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    private Timestamp time;
+    private String time;
 
     private String requestUrl;
 
@@ -24,6 +25,16 @@ public class YalongBaseCount implements Serializable {
 
     private Integer userId;
 
+    @TableField(exist = false)
+    private Integer count;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public Integer getId() {
         return id;
@@ -33,11 +44,11 @@ public class YalongBaseCount implements Serializable {
         this.id = id;
     }
 
-    public Timestamp getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

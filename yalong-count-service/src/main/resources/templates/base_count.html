@@ -39,6 +39,8 @@
                 var dom = document.getElementById("chart");
                 var myChart = echarts.init(dom);
                 var app = {};
+                urlList = result.urlList;
+                seriesData = result.seriesData;
                 option = null;
                 option = {
                     title : {
@@ -52,7 +54,7 @@
                     legend: {
                         orient: 'vertical',
                         left: 'left',
-                        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+                        data: urlList
                     },
                     series : [
                         {
