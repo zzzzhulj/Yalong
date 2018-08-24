@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YalongOnlineCount</title>
+    <script type="text/javascript" src='echarts.js'></script>
+    <script type="text/javascript" src='jquery.min.js'></script>
+</head>
+<body>
+    <div id="container" style="width:100%;height: 400px"></div>
+
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+
+
+        var date = [];
+
+        var data = [];
+        var now = new Date();
+
+        function addData(shift,result) {
+            now = [now.getHours(),now.getMinutes(),now.getSeconds()].join(':');
+            date.push(now);
+            data.push(result);
+
+            if (shift) {
+                date.shift();
+                data.shift();
+            }
+
+            now = new Date(+new Date());
+        }
+
+        for (var i = 1; i < 100; i++) {
+            addData();
+        }
+
+        option = {
+
+            title: {
+                text: '当前在线人数监控中心',
+                textStyle: {
+                    //设置主标题颜色
+                    color: '#c00a37'
+                }
+            },
+            xAxis: {
+                name:"当前时间",
+                type: 'category',
+                boundaryGap: false,
+                data: date
+            },
+            yAxis: {
+                name:"在线人数",
+                boundaryGap: [0, '50%'],
+                type: 'value'
+            },
+            //鼠标悬停的提示
+            tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    params = params[0];
+                    return params.axisValue+"/"+params.value;
+                },
+                axisPointer: {
+                    animation: false
+                }
+            },
+            series: [
+                {
+                    name:'在线人数',
+                    type:'line',
+                    smooth:true,
+                    symbol: 'none',
+                    stack: 'a',
+                    areaStyle: {
+                        normal: {}
+                    },
+                    data: data
+                }
+            ]
+        };
+
+        setInterval(function () {
+
+            $.ajax({
+                url:"/getOnlineCount",
+                type:"GET",
+                success:function (result) {
+                    addData(true,result);
+                }
+            });
+
+
+            myChart.setOption({
+                xAxis: {
+                    data: date
+                },
+                series: [{
+                    name:'当前在线人数',
+                    data: data
+                }]
+            });
+        }, 1000);
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+</body>
+</html>

@@ -39,6 +39,11 @@ public class ManageController {
         return "smp";
     }
 
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
+
 
     @RequestMapping("common/查看还款情况页面.html")
     public String getRePaymentPage(String loanContractNum,HttpServletRequest request){

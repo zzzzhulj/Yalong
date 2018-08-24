@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bat.yalong.count.mapper.YalongBaseCountMapper">
+
+    <!--List<YalongBaseCount> selectBaseCountsBetweenTime(String start, String end);-->
+    <select id="selectBaseCountsBetweenTime" resultType="com.bat.yalong.bean.YalongBaseCount">
+        SELECT
+        request_url, COUNT(request_url) count
+        FROM count_table
+        WHERE TIME BETWEEN #{param1} AND #{param2}
+        GROUP BY request_url;
+    </select>
+</mapper>

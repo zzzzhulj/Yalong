@@ -8,7 +8,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.jms.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.StringTokenizer;
 
 @Component
 public class CountInterceptor extends HandlerInterceptorAdapter {
@@ -18,6 +17,7 @@ public class CountInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("进入拦截器");
         //获取用户信息 如果有的话 必须是单点登陆 配合登陆认证服务使用
 //        CookieUtil.getCookieValue(request, "user", true);
 
